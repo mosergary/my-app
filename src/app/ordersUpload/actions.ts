@@ -2,7 +2,7 @@
 "use server";
 
 import pdf from "pdf-parse";
-import { db_hr } from "@/lib/db-config";
+import { db_admin } from "@/lib/db-config";
 import { documents } from "@/lib/db-schema";
 import { generateEmbeddings } from "@/lib/embeddings";
 import { chunkContent } from "@/lib/chunking";
@@ -35,7 +35,7 @@ export async function processPdfFile(formData: FormData) {
       embedding: embeddings[index],
     }));
 
-    await db_hr.insert(documents).values(records);
+    await db_admin.insert(documents).values(records);
 
     return {
       success: true,

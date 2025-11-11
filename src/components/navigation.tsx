@@ -6,6 +6,9 @@ import {
   SignedOut,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
+import Link from "next/link";
+
 
 export const Navigation = () => {
   return (
@@ -24,6 +27,11 @@ export const Navigation = () => {
           </SignedOut>
 
           <SignedIn>
+            <Link href="/">
+              <Button variant="ghost" size="icon">
+                <Home className="h-5 w-5" />
+              </Button>
+            </Link>
             <SignOutButton>
               <Button variant="outline">Sign Out</Button>
             </SignOutButton>

@@ -99,7 +99,7 @@ export default function PDFUpload() {
                     Upload PDF Document
                   </h2>
                   <p className="text-gray-600">
-                    Upload HR policy documents to the knowledge base
+                    Upload Clerk Training Documentation to the knowledge base
                   </p>
                 </div>
 

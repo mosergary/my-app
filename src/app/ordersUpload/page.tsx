@@ -75,7 +75,7 @@ export default function PDFUpload() {
                 className="text-black text-xl sm:text-2xl font-bold"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                HR Document Upload
+                Administrative Order Document Upload
               </h3>
             </div>
           </div>
@@ -96,10 +96,10 @@ export default function PDFUpload() {
                     className="text-3xl font-bold text-black mb-2"
                     style={{ fontFamily: "Georgia, serif" }}
                   >
-                    Upload PDF Document
+                    Upload PDF Documents
                   </h2>
                   <p className="text-gray-600">
-                    Upload HR policy documents to the knowledge base
+                    Upload Administrative Orders to the knowledge base
                   </p>
                 </div>
 

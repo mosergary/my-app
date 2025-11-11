@@ -24,24 +24,71 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center justify-center px-6 py-16">
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full">
-          <div className="h-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500]"></div>
-          <div className="p-8 text-center">
-            <h3
-              className="text-black text-3xl font-bold mb-4"
-              style={{ fontFamily: "Georgia, serif" }}
-            >
-              HR AI Assistant
-            </h3>
-            <p className="text-gray-700 mb-6 text-lg">
-              Get instant assistance with HR-related questions and policies.
-            </p>
-            <a
-              href="/chat"
-              className="inline-block bg-[#FFD700] text-[#002F87] px-10 py-4 rounded-lg hover:bg-[#FFC700] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
-            >
-              Launch Assistant →
-            </a>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+          {/* HR AI Assistant Card */}
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+            <div className="h-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500]"></div>
+            <div className="p-8 text-center">
+              <h3
+                className="text-black text-3xl font-bold mb-4"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                HR AI Assistant
+              </h3>
+              <p className="text-gray-700 mb-6 text-lg">
+                Get instant assistance with HR-related questions and policies.
+              </p>
+              <a
+                href="/chat"
+                className="inline-block bg-[#FFD700] text-[#002F87] px-10 py-4 rounded-lg hover:bg-[#FFC700] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+              >
+                Launch PeggyBot →
+              </a>
+            </div>
+          </div>
+
+          {/* Clerk AI Chat Card */}
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+            <div className="h-3 bg-gradient-to-r from-[#4169E1] to-[#1E90FF]"></div>
+            <div className="p-8 text-center">
+              <h3
+                className="text-black text-3xl font-bold mb-4"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                Clerk AI Chat
+              </h3>
+              <p className="text-gray-700 mb-6 text-lg">
+                Access clerk services and court documentation assistance.
+              </p>
+              <a
+                href="/clerk"
+                className="inline-block bg-[#4169E1] text-white px-10 py-4 rounded-lg hover:bg-[#1E90FF] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+              >
+                Launch Chat →
+              </a>
+            </div>
+          </div>
+
+          {/* Admin Orders Card */}
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+            <div className="h-3 bg-gradient-to-r from-[#DC143C] to-[#B22222]"></div>
+            <div className="p-8 text-center">
+              <h3
+                className="text-black text-3xl font-bold mb-4"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                Admin Orders
+              </h3>
+              <p className="text-gray-700 mb-6 text-lg">
+                Manage and review administrative orders and documentation.
+              </p>
+              <a
+                href="/orders"
+                className="inline-block bg-[#DC143C] text-white px-10 py-4 rounded-lg hover:bg-[#B22222] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+              >
+                View Orders →
+              </a>
+            </div>
           </div>
         </div>
       </main>
@@ -52,9 +99,7 @@ export default function Home() {
           <p className="text-white text-sm">
             © 2025 State of Idaho Judicial Branch. All rights reserved.
           </p>
-          <p className="text-[#FFD700] text-xs mt-2">
-            ESTO PERPETUA - Let it be perpetual
-          </p>
+          
         </div>
       </footer>
     </div>

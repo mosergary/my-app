@@ -34,7 +34,7 @@ export default function RAGChatBot() {
     await sendMessage(
       { text: message.text },
       {
-        body: { chatType: "hr" }, // send extra field for your route
+        body: { chatType: "clerk" }, // send extra field for your route
       }
     );
 
@@ -66,7 +66,7 @@ export default function RAGChatBot() {
                 className="text-black text-xl sm:text-2xl font-bold"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                PeggyBot AI Assistant
+                Clerk AI Assistant
               </h3>
             </div>
           </div>
@@ -136,4 +136,3 @@ export default function RAGChatBot() {
     </div>
   );
 }
-

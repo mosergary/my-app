@@ -34,7 +34,7 @@ export default function RAGChatBot() {
     await sendMessage(
       { text: message.text },
       {
-        body: { chatType: "hr" }, // send extra field for your route
+        body: { chatType: "admin" }, // send extra field for your route
       }
     );
 
@@ -66,7 +66,7 @@ export default function RAGChatBot() {
                 className="text-black text-xl sm:text-2xl font-bold"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                PeggyBot AI Assistant
+                Administrative Orders AI Assistant--Curently 5th and Supreme Court
               </h3>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function RAGChatBot() {
                 <PromptInputTextarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything about clerk procedures..."
+                  placeholder="Ask me about administrative orders in the 5th district or supreme court..."
                   className="text-black"
                 />
               </PromptInputBody>
@@ -136,4 +136,3 @@ export default function RAGChatBot() {
     </div>
   );
 }
-
