@@ -19,12 +19,15 @@ const tools = {
     }),
     execute: async ({ query }) => {
       try {
+        console.log("[HR Tool] Searching knowledge base with query:", query);
         const results = await searchDocuments_hr(query, 5, 0.5);
 
         if (!results || results.length === 0) {
+          console.log("[HR Tool] No results found");
           return "No relevant information found in the knowledge base.";
         }
 
+        console.log(`[HR Tool] Found ${results.length} results`);
         const formattedResults = results
           .map((r: any, i) =>
             `[${i + 1}] ${
@@ -35,7 +38,7 @@ const tools = {
 
         return formattedResults;
       } catch (error) {
-        console.error("Search error:", error);
+        console.error("[HR Tool] Search error:", error);
         return "Error searching the knowledge base.";
       }
     },
@@ -48,12 +51,15 @@ const tools = {
     }),
     execute: async ({ query }) => {
       try {
+        console.log("[Admin Tool] Searching knowledge base with query:", query);
         const results = await searchDocuments_admin(query, 5, 0.5);
 
         if (!results || results.length === 0) {
+          console.log("[Admin Tool] No results found");
           return "No relevant information found in the knowledge base.";
         }
 
+        console.log(`[Admin Tool] Found ${results.length} results`);
         const formattedResults = results
           .map((r: any, i) =>
             `[${i + 1}] ${
@@ -64,7 +70,7 @@ const tools = {
 
         return formattedResults;
       } catch (error) {
-        console.error("Search error:", error);
+        console.error("[Admin Tool] Search error:", error);
         return "Error searching the knowledge base.";
       }
     },
@@ -77,12 +83,15 @@ const tools = {
     }),
     execute: async ({ query }) => {
       try {
+        console.log("[Clerk Tool] Searching knowledge base with query:", query);
         const results = await searchDocuments_clerk(query, 5, 0.5);
 
         if (!results || results.length === 0) {
+          console.log("[Clerk Tool] No results found");
           return "No relevant information found in the knowledge base.";
         }
 
+        console.log(`[Clerk Tool] Found ${results.length} results`);
         const formattedResults = results
           .map((r: any, i) =>
             `[${i + 1}] ${
@@ -93,7 +102,7 @@ const tools = {
 
         return formattedResults;
       } catch (error) {
-        console.error("Search error:", error);
+        console.error("[Clerk Tool] Search error:", error);
         return "Error searching the knowledge base.";
       }
     },
@@ -187,6 +196,8 @@ Your goal is to provide accurate, authoritative information about administrative
 };
 
 export async function POST(req: Request) {
+  const startTime = Date.now();
+  
   try {
     const { messages, chatType }: { messages: ChatMessage[]; chatType: "hr" | "clerk" | "admin" } = await req.json();
 
@@ -194,9 +205,23 @@ export async function POST(req: Request) {
     const selectedChatType = chatType || "hr";
     const systemPrompt = systemPrompts[selectedChatType];
 
+    console.log("=== OpenAI Chat Request ===");
+    console.log(`Chat Type: ${selectedChatType}`);
+    console.log(`Message Count: ${messages.length}`);
+    console.log(`Timestamp: ${new Date().toISOString()}`);
+    
+    // Log the last user message
+    const lastUserMessage = messages.filter(m => m.role === "user").pop();
+    if (lastUserMessage) {
+      console.log("Last User Message:", JSON.stringify(lastUserMessage, null, 2));
+    }
+
     if (!systemPrompt) {
+      console.error("Invalid chat type:", selectedChatType);
       return new Response("Invalid chat type", { status: 400 });
     }
+
+    console.log("Initiating OpenAI stream with model: gpt-4.1-mini");
 
     const result = streamText({
       model: openai("gpt-4.1-mini"),
@@ -204,11 +229,44 @@ export async function POST(req: Request) {
       tools,
       system: systemPrompt,
       stopWhen: stepCountIs(5),
+      onFinish: async ({ text, toolCalls, toolResults, finishReason, usage }) => {
+        const duration = Date.now() - startTime;
+        console.log("=== OpenAI Response Complete ===");
+        console.log(`Duration: ${duration}ms`);
+        console.log(`Finish Reason: ${finishReason}`);
+        console.log(`Response Length: ${text?.length || 0} characters`);
+        
+        if (usage) {
+          console.log("Token Usage:", usage);
+        }
+        
+        if (toolCalls && toolCalls.length > 0) {
+          console.log(`Tool Calls: ${toolCalls.length}`);
+          toolCalls.forEach((call, idx) => {
+            console.log(`  [${idx + 1}]`, call);
+          });
+        }
+        
+        if (toolResults && toolResults.length > 0) {
+          console.log(`Tool Results: ${toolResults.length}`);
+          toolResults.forEach((result, idx) => {
+            console.log(`  [${idx + 1}]`, result);
+          });
+        }
+        
+        console.log("=============================\n");
+      },
     });
 
     return result.toUIMessageStreamResponse();
   } catch (error) {
-    console.error("Error streaming chat completion:", error);
+    const duration = Date.now() - startTime;
+    console.error("=== OpenAI Chat Error ===");
+    console.error(`Duration: ${duration}ms`);
+    console.error("Error details:", error);
+    console.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
+    console.error("========================\n");
+    
     return new Response("Failed to stream chat completion", { status: 500 });
   }
 }
