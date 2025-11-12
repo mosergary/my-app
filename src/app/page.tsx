@@ -94,12 +94,21 @@ export default function Home() {
       </main>
 
       {/* Footer */}
+
+      {/* Footer */}
       <footer className="w-full bg-[#001F57] py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-white text-sm">
-            © 2025 State of Idaho Judicial Branch. All rights reserved.
-          </p>
-          
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center">
+            <p className="text-white text-sm">
+              © 2025 State of Idaho Judicial Branch. All rights reserved.
+            </p>
+            <a
+              href="/techstack"
+              className="text-white text-sm hover:text-[#FFD700] transition-colors duration-300 underline"
+            >
+              Tech Stack & Architecture
+            </a>
+          </div>
         </div>
       </footer>
     </div>
