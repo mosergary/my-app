@@ -75,7 +75,7 @@ export default function PDFUpload() {
                 className="text-black text-xl sm:text-2xl font-bold"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                HR Document Upload
+                Clerk Document Upload
               </h3>
             </div>
           </div>
