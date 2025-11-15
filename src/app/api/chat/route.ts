@@ -111,22 +111,22 @@ const tools = {
 
 
 
-searchKnowledgeBase_Opinions: tool({
+searchKnowledgeBase_opinions: tool({
   description: "Search the knowledge base for relevant information",
   inputSchema: z.object({
     query: z.string().describe("The search query to find relevant sections"),
   }),
   execute: async ({ query }) => {
     try {
-      console.log("[Opinions Tool] Searching knowledge base with query:", query);
+      console.log("[opinions Tool] Searching knowledge base with query:", query);
       const results = await searchDocuments_opinions(query, 5, 0.5);
 
       if (!results || results.length === 0) {
-        console.log("[Opinions Tool] No results found");
+        console.log("[opinions Tool] No results found");
         return "No relevant information found in the knowledge base.";
       }
 
-      console.log(`[Opinions Tool] Found ${results.length} results`);
+      console.log(`[opinions Tool] Found ${results.length} results`);
       const formattedResults = results
         .map((r: any, i) =>
           `[${i + 1}] ${
@@ -137,7 +137,7 @@ searchKnowledgeBase_Opinions: tool({
 
       return formattedResults;
     } catch (error) {
-      console.error("[Opinions Tool] Search error:", error);
+      console.error("[opinions Tool] Search error:", error);
       return "Error searching the knowledge base.";
     }
   },
