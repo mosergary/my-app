@@ -9,7 +9,7 @@ import {
 } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
-import { searchDocuments_hr, searchDocuments_admin, searchDocuments_clerk } from "@/lib/search";
+import { searchDocuments_hr, searchDocuments_admin, searchDocuments_clerk, searchDocuments_opinions } from "@/lib/search";
 
 const tools = {
   searchKnowledgeBase_hr: tool({
@@ -119,7 +119,7 @@ searchKnowledgeBase_Opinions: tool({
   execute: async ({ query }) => {
     try {
       console.log("[Opinions Tool] Searching knowledge base with query:", query);
-      const results = await searchDocuments_clerk(query, 5, 0.5);
+      const results = await searchDocuments_opinions(query, 5, 0.5);
 
       if (!results || results.length === 0) {
         console.log("[Opinions Tool] No results found");
