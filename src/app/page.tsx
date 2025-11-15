@@ -24,23 +24,23 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center justify-center px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full auto-rows-fr">
           {/* HR AI Assistant Card */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500]"></div>
-            <div className="p-8 text-center">
+            <div className="p-8 text-center flex flex-col flex-grow">
               <h3
                 className="text-black text-3xl font-bold mb-4"
                 style={{ fontFamily: "Georgia, serif" }}
               >
                 HR AI Assistant
               </h3>
-              <p className="text-gray-700 mb-6 text-lg">
+              <p className="text-gray-700 mb-6 text-lg flex-grow">
                 Get instant assistance with HR-related questions and policies.
               </p>
               <a
                 href="/chat"
-                className="inline-block bg-[#FFD700] text-[#002F87] px-10 py-4 rounded-lg hover:bg-[#FFC700] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+                className="inline-block bg-[#FFD700] text-[#002F87] px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#FFC700] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
               >
                 Launch PeggyBot →
               </a>
@@ -48,65 +48,65 @@ export default function Home() {
           </div>
 
           {/* Clerk AI Chat Card */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#4169E1] to-[#1E90FF]"></div>
-            <div className="p-8 text-center">
+            <div className="p-8 text-center flex flex-col flex-grow">
               <h3
                 className="text-black text-3xl font-bold mb-4"
                 style={{ fontFamily: "Georgia, serif" }}
               >
                 Clerk AI Chat
               </h3>
-              <p className="text-gray-700 mb-6 text-lg">
+              <p className="text-gray-700 mb-6 text-lg flex-grow">
                 Access clerk services and court documentation assistance.
               </p>
               <a
                 href="/clerk"
-                className="inline-block bg-[#4169E1] text-white px-10 py-4 rounded-lg hover:bg-[#1E90FF] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+                className="inline-block bg-[#4169E1] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#1E90FF] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
               >
-                Launch Chat →
+                Launch Clerk Chat →
               </a>
             </div>
           </div>
 
           {/* Admin Orders Card */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#DC143C] to-[#B22222]"></div>
-            <div className="p-8 text-center">
+            <div className="p-8 text-center flex flex-col flex-grow">
               <h3
                 className="text-black text-3xl font-bold mb-4"
                 style={{ fontFamily: "Georgia, serif" }}
               >
                 Admin Orders
               </h3>
-              <p className="text-gray-700 mb-6 text-lg">
+              <p className="text-gray-700 mb-6 text-lg flex-grow">
                 Manage and review administrative orders and documentation.
               </p>
               <a
                 href="/orders"
-                className="inline-block bg-[#DC143C] text-white px-10 py-4 rounded-lg hover:bg-[#B22222] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+                className="inline-block bg-[#DC143C] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#B22222] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
               >
-                View Orders →
+                View Admin Orders →
               </a>
             </div>
           </div>
 
           {/* Court Opinions Card */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#228B22] to-[#32CD32]"></div>
-            <div className="p-8 text-center">
+            <div className="p-8 text-center flex flex-col flex-grow">
               <h3
                 className="text-black text-3xl font-bold mb-4"
                 style={{ fontFamily: "Georgia, serif" }}
               >
                 Court Opinions
               </h3>
-              <p className="text-gray-700 mb-6 text-lg">
+              <p className="text-gray-700 mb-6 text-lg flex-grow">
                 Search and review Idaho court opinions and case summaries.
               </p>
               <a
                 href="/opinions"
-                className="inline-block bg-[#228B22] text-white px-10 py-4 rounded-lg hover:bg-[#32CD32] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+                className="inline-block bg-[#228B22] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#32CD32] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
               >
                 Search Opinions →
               </a>
