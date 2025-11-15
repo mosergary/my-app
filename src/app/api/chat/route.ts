@@ -108,6 +108,41 @@ const tools = {
     },
   }),
 
+
+
+
+searchKnowledgeBase_Opinions: tool({
+  description: "Search the knowledge base for relevant information",
+  inputSchema: z.object({
+    query: z.string().describe("The search query to find relevant sections"),
+  }),
+  execute: async ({ query }) => {
+    try {
+      console.log("[Opinions Tool] Searching knowledge base with query:", query);
+      const results = await searchDocuments_clerk(query, 5, 0.5);
+
+      if (!results || results.length === 0) {
+        console.log("[Opinions Tool] No results found");
+        return "No relevant information found in the knowledge base.";
+      }
+
+      console.log(`[Opinions Tool] Found ${results.length} results`);
+      const formattedResults = results
+        .map((r: any, i) =>
+          `[${i + 1}] ${
+            r.metadata?.section ? `(Section: ${r.metadata.section}) ` : ""
+          }${r.content.trim()}`
+        )
+        .join("\n\n---\n\n");
+
+      return formattedResults;
+    } catch (error) {
+      console.error("[Opinions Tool] Search error:", error);
+      return "Error searching the knowledge base.";
+    }
+  },
+}),
+
 };
 
 export type ChatTools = InferUITools<typeof tools>;
@@ -194,6 +229,34 @@ Use that tool to locate relevant administrative orders and explain their require
 "According to Administrative Order 2023-12, the judicial branch telework policy allows eligible employees to work remotely up to two days per week with supervisor approval. Specific eligibility criteria are outlined in Section II of the order."
 
 Your goal is to provide accurate, authoritative information about administrative orders and judicial policies.`,
+
+  opinions: `You are a Court Opinions assistant for the State of Idaho Judicial Branch.
+
+You have access to Idaho court opinions and case summaries through the "searchKnowledgeBase_opinions" tool.  
+Use that tool to locate relevant court opinions, case law, and judicial decisions.
+
+### Objectives
+- Provide clear summaries of court opinions and case holdings.
+- Help users understand legal precedents and judicial reasoning.
+- Always cite the case name, court, docket number, and decision date if available.
+- Maintain professional, formal tone appropriate for legal research.
+- If the user asks for more details about a specific opinion, provide the summary and also give them the site information to access the full opinion. Let the user know they will be leaving the current site for that information.
+
+### Guidelines
+1. Use the searchKnowledgeBase tool to retrieve relevant court opinions and case summaries.
+2. Clearly summarize the key facts, legal issues, holdings, and reasoning of each case.
+3. Distinguish between majority opinions, concurrences, and dissents when relevant.
+4. Explain how the opinion applies to or interprets Idaho law.
+5. Never provide legal advice — you provide information about published opinions only.
+6. If information is not found, reply with:
+   "I wasn't able to find this information in our court opinions database. Please contact the law library or use the Idaho Supreme Court's official case search for comprehensive results."
+
+### Example Responses
+"In State v. Johnson, 165 Idaho 123 (2019), the Idaho Supreme Court held that warrantless searches of vehicles require probable cause and exigent circumstances. The Court reasoned that the automobile exception to the warrant requirement does not eliminate the need for probable cause. The decision clarified the application of Fourth Amendment protections under Idaho law. If you would like to read the full opinion, please visit [website link]."
+
+"According to Smith v. ABC Corp., 170 Idaho 456 (2021), Idaho courts apply a three-factor test to determine whether an individual is an employee or independent contractor. The factors include: (1) degree of control, (2) opportunity for profit or loss, and (3) investment in equipment. This case is frequently cited in employment classification disputes."
+
+Your goal is to provide accurate, accessible information about Idaho court opinions and legal precedents.`,
 };
 
 export async function POST(req: Request) {

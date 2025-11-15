@@ -12,3 +12,6 @@ export const db_clerk = drizzle(sql_clerk);
 
 const sql_admin = neon(process.env.NEON_DATABASE_URL_ADMIN!);
 export const db_admin = drizzle(sql_admin);
+
+const sql_opinions = neon(process.env.NEON_DATABASE_URL_OPINIONS!);
+export const db_opinions = drizzle(sql_opinions);

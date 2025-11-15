@@ -24,7 +24,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col items-center justify-center px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
           {/* HR AI Assistant Card */}
           <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
             <div className="h-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500]"></div>
@@ -90,10 +90,30 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* Court Opinions Card */}
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+            <div className="h-3 bg-gradient-to-r from-[#228B22] to-[#32CD32]"></div>
+            <div className="p-8 text-center">
+              <h3
+                className="text-black text-3xl font-bold mb-4"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                Court Opinions
+              </h3>
+              <p className="text-gray-700 mb-6 text-lg">
+                Search and review Idaho court opinions and case summaries.
+              </p>
+              <a
+                href="/opinions"
+                className="inline-block bg-[#228B22] text-white px-10 py-4 rounded-lg hover:bg-[#32CD32] transition-all duration-300 font-bold shadow-lg text-lg hover:shadow-xl hover:scale-105"
+              >
+                Search Opinions →
+              </a>
+            </div>
+          </div>
         </div>
       </main>
-
-      {/* Footer */}
 
       {/* Footer */}
       <footer className="w-full bg-[#001F57] py-6 mt-auto">

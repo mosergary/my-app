@@ -1,6 +1,6 @@
 // src/lib/search.ts
 import { cosineDistance, desc, gt, sql } from "drizzle-orm";
-import { db_admin, db_hr, db_clerk } from "./db-config";
+import { db_admin, db_hr, db_clerk, db_opinions } from "./db-config";
 import { documents } from "./db-schema";
 import { generateEmbedding } from "./embeddings";
 
@@ -85,6 +85,36 @@ export async function searchDocuments_admin(
 
   // Use Drizzle's query builder for the search
   const similarDocuments = await db_admin
+    .select({
+      id: documents.id,
+      content: documents.content,
+      similarity,
+    })
+    .from(documents)
+    .where(gt(similarity, threshold))
+    .orderBy(desc(similarity))
+    .limit(limit);
+
+  return similarDocuments;
+}
+
+export async function searchDocuments_opinions(
+  query: string,
+  limit: number = 5,
+  threshold: number = 0.5
+) {
+  // Generate embedding for the search query
+  const embedding = await generateEmbedding(query);
+
+  // Calculate similarity using Drizzle's cosineDistance function
+  // This creates a SQL expression for similarity calculation
+  const similarity = sql<number>`1 - (${cosineDistance(
+    documents.embedding,
+    embedding
+  )})`;
+
+  // Use Drizzle's query builder for the search
+  const similarDocuments = await db_opinions
     .select({
       id: documents.id,
       content: documents.content,
