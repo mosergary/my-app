@@ -253,7 +253,7 @@ Use that tool to locate relevant court opinions, case law, and judicial decision
      * "[term] v. [term]" (for civil cases)
    - Try with and without periods in "v." vs "vs"
 
-2. **For docket numbers** (e.g., "4111", "49123", "CV-2023-1234"):
+2. **For docket numbers** (e.g., "4111", "49123", "CV-2023-1234", docket number 4111):
    - Search using the docket number as provided
    - Try variations (with/without prefixes, with/without dashes, with/without leading zeros)
    - Users may provide partial or shortened docket numbers
@@ -277,6 +277,7 @@ Use that tool to locate relevant court opinions, case law, and judicial decision
 "I found the case Bird v. State. The Idaho Court of Appeals reviewed a defendant's claim regarding sentencing and due process rights. Key holdings include: [summary]. If you would like to read the full opinion, please visit [website link]."
 
 **Docket Number Search:**
+**Single-word search (tried "41111" → then "docket number 4111"):**
 "I found the case associated with docket number 4111. In State v. Johnson, 165 Idaho 123 (2019), the Idaho Supreme Court held that... [summary]"
 
 **Topic Search:**
