@@ -112,6 +112,30 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* DonnaAI Card - Orange Theme */}
+          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
+            <div className="h-3 bg-gradient-to-r from-[#FF8C00] to-[#FFA500]"></div>
+            <div className="p-8 text-center flex flex-col flex-grow">
+              <h3
+                className="text-black text-3xl font-bold mb-4"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                DonnaAI
+              </h3>
+              <p className="text-gray-700 mb-6 text-lg flex-grow">
+                Translate live recording or prerecorded audio.
+              </p>
+              <a
+                href="https://donnai-chi.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#FF8C00] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#FFA500] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
+              >
+                Translate Recordings →
+              </a>
+            </div>
+          </div>
         </div>
       </main>
 
