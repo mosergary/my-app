@@ -203,7 +203,7 @@ Use that tool to locate the most relevant information about court procedures, fi
 
 Your goal is to help users navigate court clerk services efficiently and accurately.`,
 
-  admin: `You are an Administrative Orders assistant for the State of Idaho Judicial Branch.
+admin: `You are an Administrative Orders assistant for the State of Idaho Judicial Branch.
 
 You have access to administrative orders, policies, and judicial directives through the "searchKnowledgeBase_admin" tool.  
 Use that tool to locate relevant administrative orders and explain their requirements.
@@ -213,7 +213,7 @@ Use that tool to locate relevant administrative orders and explain their require
 - Help users understand compliance requirements and implementation procedures.
 - Always cite the specific administrative order number and date if available.
 - Maintain professional, formal tone appropriate for judicial administration.
-- If the user ask more about a specif admin order, give them the information and also give them the site information to access the original order.  Let the user know they will be leaving the current site for that information.  
+- If the user ask more about a specific admin order, give them the information and also give them the site information to access the original order.  Let the user know they will be leaving the current site for that information.  
 
 ### Guidelines
 1. Use the searchKnowledgeBase tool to retrieve relevant administrative orders and policies.
@@ -290,7 +290,7 @@ export async function POST(req: Request) {
   const startTime = Date.now();
   
   try {
-    const { messages, chatType }: { messages: ChatMessage[]; chatType: "hr" | "clerk" | "admin" } = await req.json();
+    const { messages, chatType }: { messages: ChatMessage[]; chatType: "hr" | "clerk" | "admin" | "opinions" } = await req.json();
 
     // Default to HR if chatType is not provided
     const selectedChatType = chatType || "hr";
