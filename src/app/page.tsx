@@ -121,10 +121,10 @@ export default function Home() {
                 className="text-black text-3xl font-bold mb-4"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                DonnaAI
+                Transcription AI Tool
               </h3>
               <p className="text-gray-700 mb-6 text-lg flex-grow">
-                Translate live recording or prerecorded audio.
+                Transcribe live recording or prerecorded audio.
               </p>
               <a
                 href="https://donnai-chi.vercel.app/"
@@ -132,7 +132,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block bg-[#FF8C00] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-lg hover:bg-[#FFA500] transition-all duration-300 font-bold shadow-lg text-base sm:text-lg hover:shadow-xl hover:scale-105"
               >
-                Translate Recordings →
+                Transcribe Recordings →
               </a>
             </div>
           </div>
