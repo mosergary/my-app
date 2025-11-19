@@ -69,7 +69,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Admin Orders Card */}
+        {/* Admin Orders Card */}
           <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#DC143C] to-[#B22222]"></div>
             <div className="p-8 text-center flex flex-col flex-grow">
@@ -92,7 +92,7 @@ export default function Home() {
           </div>
 
           {/* Court Opinions Card */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
+          {/* <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#228B22] to-[#32CD32]"></div>
             <div className="p-8 text-center flex flex-col flex-grow">
               <h3
@@ -111,10 +111,10 @@ export default function Home() {
                 Search Opinions →
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/* DonnaAI Card - Orange Theme */}
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
+          {/*<div className="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col h-full">
             <div className="h-3 bg-gradient-to-r from-[#FF8C00] to-[#FFA500]"></div>
             <div className="p-8 text-center flex flex-col flex-grow">
               <h3
@@ -135,7 +135,7 @@ export default function Home() {
                 Transcribe Recordings →
               </a>
             </div>
-          </div>
+          </div>*/}
         </div>
       </main>
 
