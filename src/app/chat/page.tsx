@@ -108,7 +108,7 @@ export default function RAGChatBot() {
                 <PromptInputTextarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask me anything about clerk procedures..."
+                  placeholder="Ask me about hr policies..."
                   className="text-black"
                 />
               </PromptInputBody>
